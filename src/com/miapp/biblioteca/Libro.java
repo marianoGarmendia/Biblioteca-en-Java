@@ -9,6 +9,7 @@ public class Libro {
     private String genero;
     private ArrayList<String> reseña;
     private boolean disponible;
+    private Prestamo infoPrestamo;
     
     // Constructor
     public Libro(String titulo, String autor, String ISBN, String genero) {
@@ -18,6 +19,7 @@ public class Libro {
         this.genero = genero;
         this.reseña = new ArrayList<>();
         this.disponible = true;
+        this.infoPrestamo = new Prestamo();
     }
     
     // ConstructorVacio
@@ -68,6 +70,14 @@ public class Libro {
 		reseña.add(newReseña);
 	}
 	
+	public Prestamo getInfoPrestamo (){
+		return infoPrestamo;
+	}
+	
+	public void setInfoPrestamo(Prestamo newPrestamo) {
+		infoPrestamo = newPrestamo;
+	}
+	
 	public Boolean getDisponible() {
 		return disponible;
 	}
@@ -79,6 +89,7 @@ public class Libro {
 	public String toString(Libro libro) {
 		return "Libro [ Titulo: "+ libro.getTitulo() + " - Autor: " + libro.getAutor() 
 				+ " - ISBN: "+ libro.getISBN() + " - Género: "+ libro.getGenero() 
-				+ " - Disponible: "+ libro.getDisponible() + " - Reseñas: "+libro.getReseña();
+				+ " - Disponible: "+ libro.getDisponible() + " - Reseñas: "+libro.getReseña()
+				+ " - informacion del prestamo: "+ infoPrestamo.getPrestamo(libro);
 	}
 }

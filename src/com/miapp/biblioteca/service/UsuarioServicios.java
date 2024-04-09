@@ -1,9 +1,11 @@
 package com.miapp.biblioteca.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.miapp.biblioteca.Libro;
+import com.miapp.biblioteca.Prestamo;
 import com.miapp.biblioteca.Reseña;
 import com.miapp.biblioteca.Usuario;
 
@@ -60,7 +62,12 @@ public class UsuarioServicios {
 			if(libro.getDisponible()) {
 				usuario.setLibrosPrestados(libro);
 				libro.setDisponible(false);
-				return "Libro prestado a: "+ usuario.getNombre();
+				LocalDate fechaActual = LocalDate.now();
+				Prestamo prestamo = new Prestamo(usuario.getNombre(), fechaActual, 15);
+				libro.setInfoPrestamo(prestamo);
+				return "Libro prestado a: "+ usuario.getNombre() +"\n"+
+						"Titulo: " + libro.getTitulo() +" \n"
+						+ "Devolver en 15 dias: ( "+ fechaActual.plusDays(15).toString()+")";
 			}else {
 				return "El libro no esta disponible para préstamo";
 			}
@@ -88,6 +95,7 @@ public class UsuarioServicios {
 		if(librosPrestados.contains(libro)) {
 			librosPrestados.remove(libro);
 			libro.setDisponible(true);	
+			libro.setInfoPrestamo(new Prestamo());
 			return "Libro devuelto correctamente";
 		}else {
 			

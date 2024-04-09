@@ -38,7 +38,7 @@ public class Main {
 		String genero = scanner.nextLine();
 		String messageLibroCreado = libroServicio.crearLibro(titulo, autor, ISBN, genero);
 		System.out.println(messageLibroCreado);
-		System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+		System.out.println("Para volver al menu presiona ENTER");
 		scanner.nextLine();	
 		break;
 	case 2:
@@ -58,7 +58,7 @@ public class Main {
 		String generoActualizado = scanner.nextLine();
 		String messageLibroActualizado = libroServicio.actualizarLibro(tituloActualizado, autorActualizado, isbn, generoActualizado);
 		System.out.println(messageLibroActualizado);
-		System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+		System.out.println("Para volver al menu presiona ENTER");
 		scanner.nextLine();	}
 		break;
 	case 3:
@@ -67,12 +67,12 @@ public class Main {
 		String isbnAbuscar = scanner.nextLine();
 		Libro libroPorISBN = libroServicio.buscarLibroPorIsbn(isbnAbuscar);
 		if(libroPorISBN != null) {
-			System.out.println("Libro encontrado: "+ libroPorISBN.getTitulo());
-			System.out.println("Para volver al menu presiona: 1");
+			System.out.println("Libro encontrado: "+ libroPorISBN.toString(libroPorISBN));
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}else {
 			System.out.println("Libro no encontrado");
-			System.out.println("Para volver al menu presiona: 1");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
@@ -83,14 +83,14 @@ public class Main {
 		ArrayList<Libro> libroEncontrado = libroServicio.buscarLibroPorTitulo(tituloABuscar);
 		if(libroEncontrado.isEmpty()) {
 			System.out.println("No hay libros con ese titulo");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 			
 		}else {
 			System.out.println("Libro/s encontrado/s: ");
 			for(Libro libro: libroEncontrado) {
 				System.out.println(libro.toString(libro));
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();	
 		    }
 		}
@@ -99,7 +99,7 @@ public class Main {
 		ArrayList<Libro> librosTotales = libroServicio.obtenerLibros();
 		if(librosTotales.isEmpty()) {
 			System.out.println("No hay ningun libro cargado");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();	
 		}else {
 			for(Libro libro : librosTotales) {
@@ -108,7 +108,7 @@ public class Main {
 			}
 			
 		}
-		System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+		System.out.println("Para volver al menu presiona ENTER");
 		scanner.nextLine();
 		scanner.nextLine();
 		
@@ -119,7 +119,7 @@ public class Main {
 		String isbnAEliminar = scanner.nextLine();
 		String messageLibroAEliminar = libroServicio.eliminarLibro(isbnAEliminar);
 		System.out.println(messageLibroAEliminar);
-		System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+		System.out.println("Para volver al menu presiona ENTER");
 		scanner.nextLine();
 		break;
 	case 7:
@@ -129,7 +129,7 @@ public class Main {
 		Usuario usuarioParaPrestamo = usuarioServicio.buscarUsuarioPorId(idUusarioPrestamo);
 		if(usuarioParaPrestamo == null) {
 			System.out.println("No hay usuarios con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 			break;
 		}else {
@@ -139,11 +139,11 @@ public class Main {
 			if(libroAPrestar != null) {
 				String messagePrestamo = usuarioServicio.prestarLibro(usuarioParaPrestamo, libroAPrestar);
 				System.out.println(messagePrestamo);
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();				
 			}else {
 				System.out.println("No hay un libro con ese ISBN");
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}
 		}
@@ -155,7 +155,7 @@ public class Main {
 		Usuario usuarioDevolucion = usuarioServicio.buscarUsuarioPorId(usuarioDevolucionId);
 		if(usuarioDevolucion == null) {
 			System.out.println("No hay usuarios con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 			break;
 		}else {
@@ -165,11 +165,11 @@ public class Main {
 			if(libroDevolucion != null) {
 				String messageDevolucion = usuarioServicio.devolverLibro(usuarioDevolucion, libroDevolucion);
 				System.out.println(messageDevolucion);
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}else {
 				System.out.println("No hay un libro con ese ISBN");
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}
 		}
@@ -182,7 +182,7 @@ public class Main {
 		String idNuevoUsuario = scanner.nextLine();
 		String messageUsuarioCreado = usuarioServicio.crearUsuario(nombreUsuarioNuevo, idNuevoUsuario);
 		System.out.println(messageUsuarioCreado);
-		System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+		System.out.println("Para volver al menu presiona ENTER");
 		scanner.nextLine();
 		break;	
 	case 10:
@@ -195,11 +195,11 @@ public class Main {
 			String nombreNuevo = scanner.nextLine();
 			String messageActualizarUsuario = usuarioServicio.actualizarUsuario(nombreNuevo, idUusarioActualizar);
 			System.out.println(messageActualizarUsuario);
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}else {
 			System.out.println("No hay usuarios con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 			break;
 		}
@@ -211,11 +211,11 @@ public class Main {
 		Usuario usuarioEncontrado = usuarioServicio.buscarUsuarioPorId(idUsuarioBuscar);
 		if(usuarioEncontrado != null) {
 			System.out.println( usuarioEncontrado.toString());
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}else {
 			System.out.println("No hay usuarios con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
@@ -227,11 +227,11 @@ public class Main {
 		if(usuarioEliminar != null) {
 			String messageEliminar = usuarioServicio.eliminarUsuario(idUsuarioEliminar);
 			System.out.println(messageEliminar);
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}else {
 			System.out.println("No hay usuario con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
@@ -247,16 +247,16 @@ public class Main {
 				for(Libro libro : librosPrestados) {
 					System.out.println(libro.toString(libro));	
 				}
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}else {
 				System.out.println("Este usuario no tiene préstamos");
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}
 		}else {
 			System.out.println("No hay un usuario con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
@@ -274,16 +274,16 @@ public class Main {
 				String reseñaDelLibro = scanner.nextLine();
 				String messageReseña = usuarioServicio.calificarLibro(usuarioReseña, libroReseña, reseñaDelLibro);
 				System.out.println(messageReseña);
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}else {
 				System.out.println("No hay un libro con ese ISBN");
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}
 		}else {
 			System.out.println("No hay un usuario con ese id");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
@@ -299,16 +299,16 @@ public class Main {
 				for(String reseña : reseñasDelLibro) {
 					System.out.println(reseña);
 				}
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}else {
 				System.out.println("El libro: "+ reseñasLibro.getTitulo()+ " no tiene reseñas");
-				System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+				System.out.println("Para volver al menu presiona ENTER");
 				scanner.nextLine();
 			}
 		}else {
 			System.out.println("No hay un libro con ese ISBN");
-			System.out.println("Para volver al menu presiona: 1 y luego ENTER");
+			System.out.println("Para volver al menu presiona ENTER");
 			scanner.nextLine();
 		}
 		break;
